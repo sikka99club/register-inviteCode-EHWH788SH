@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Dashboard - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f3f4f6; }
+        .gradient-top { background: linear-gradient(135deg, #00d285 0%, #00b074 100%); }
+    </style>
+</head>
+<body class="pb-32">
+
+    <!-- Top Header Profile Section -->
+    <div class="gradient-top px-4 pt-5 pb-9 text-white">
+        <div class="flex items-center space-x-3">
+            <img src="https://github.com/casinolootprmo/laughing-garbanzo/blob/0317840657d035ffc47d08513dd8e0825dc8640d/9-iOf3oyEz.png?raw=true" alt="Profile" class="w-16 h-16 rounded-full border-2 border-white/30 object-cover">
+            <div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-bold text-sm tracking-wide">MEMBERNNGMHX5Y</span>
+                    <span class="bg-white/20 text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex items-center space-x-1">
+                        <i class="fa-solid fa-star text-[9px] text-yellow-300"></i>
+                        <span>VIP0</span>
+                    </span>
+                </div>
+                <div class="flex items-center space-x-1.5 text-xs text-white/90 mt-1">
+                    <span>UID | VGY28389</span>
+                    <button onclick="copyUID()" class="hover:text-yellow-200 transition">
+                        <i class="fa-regular fa-clone text-[11px]"></i>
+                    </button>
+                </div>
+                <p class="text-[10px] text-white/70 mt-1">Last login: 2026-08-17 16:09:58</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="px-4 -mt-4 space-y-3">
+        
+        <!-- Total Balance Card -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm">
+            <div class="text-xs text-gray-400 font-medium mb-1">Total balance</div>
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-2xl font-black text-gray-800 flex items-center space-x-2">
+                    <span id="userLiveBalance">₹320.00</span>
+                    <button onclick="fetchUserBalance()" class="text-gray-400 hover:text-emerald-500 transition text-sm">
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </div>
+                <a href="" class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full transition shadow-sm">
+                    Enter wallet
+                </a>
+            </div>
+
+            <!-- 4 Grid Icon Buttons -->
+            <div class="grid grid-cols-4 gap-2 pt-2 border-t border-gray-100 text-center">
+                <a href="" class="flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition">
+                    <img src="https://github.com/casinolootprmo/laughing-garbanzo/blob/0317840657d035ffc47d08513dd8e0825dc8640d/balance-DmuJO3Yz.png?raw=true" alt="ARWallet" class="w-8 h-8 object-contain mb-1">
+                    <span class="text-[11px] font-bold text-gray-700">ARWallet</span>
+                </a>
+                <a href="deposit.html" class="flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition">
+                    <img src="https://github.com/casinolootprmo/laughing-garbanzo/blob/0317840657d035ffc47d08513dd8e0825dc8640d/WithBeforeImgIcon2_20260428231308i5dx.png?raw=true" alt="Deposit" class="w-8 h-8 object-contain mb-1">
+                    <span class="text-[11px] font-bold text-gray-700">Deposit</span>
+                </a>
+                <a href="withdraw.html" class="flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition">
+                    <img src="https://github.com/casinolootprmo/laughing-garbanzo/blob/0317840657d035ffc47d08513dd8e0825dc8640d/balance-DmuJO3Yz.png?raw=true" alt="Withdraw" class="w-8 h-8 object-contain mb-1">
+                    <span class="text-[11px] font-bold text-gray-700">Withdraw</span>
+                </a>
+                <a href="vip.html" class="flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition">
+                    <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1 overflow-hidden">
+                        <img src="https://github.com/casinolootprmo/laughing-garbanzo/blob/0317840657d035ffc47d08513dd8e0825dc8640d/0.png?raw=true" alt="VIP" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-[11px] font-bold text-gray-700">VIP</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Safe Box Card -->
+        <a href="safe.html" class="bg-white rounded-2xl p-4 shadow-sm flex items-center justify-between hover:border-emerald-300 transition block border border-transparent">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-500 text-lg">
+                    <i class="fa-solid fa-vault"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-gray-800">Safe</div>
+                    <p class="text-[10px] text-gray-400 mt-0.5 leading-tight">The daily interest rate is 0.1%, and income is calculated every 1 minute.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full" id="safeBalance">₹0.00</span>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+            </div>
+        </a>
+
+        <!-- 4 Grid Functional Cards (History & Transactions) -->
+        <div class="grid grid-cols-2 gap-2.5">
+            <a href="game-history.html" class="bg-white rounded-2xl p-4 shadow-sm flex items-center space-x-3 hover:border-emerald-300 transition border border-transparent">
+                <div class="bg-blue-50 text-blue-500 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-file-lines text-base"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-gray-800">Game History</div>
+                    <div class="text-[10px] text-gray-400">My game history</div>
+                </div>
+            </a>
+            <a href="transaction.html" class="bg-white rounded-2xl p-4 shadow-sm flex items-center space-x-3 hover:border-emerald-300 transition border border-transparent">
+                <div class="bg-emerald-50 text-emerald-500 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-right-left text-base"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-gray-800">Transaction</div>
+                    <div class="text-[10px] text-gray-400">My transaction history</div>
+                </div>
+            </a>
+            <a href="deposit.html" class="bg-white rounded-2xl p-4 shadow-sm flex items-center space-x-3 hover:border-emerald-300 transition border border-transparent">
+                <div class="bg-rose-50 text-rose-500 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-wallet text-base"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-gray-800">Deposit</div>
+                    <div class="text-[10px] text-gray-400">My deposit history</div>
+                </div>
+            </a>
+            <a href="withdraw.html" class="bg-white rounded-2xl p-4 shadow-sm flex items-center space-x-3 hover:border-emerald-300 transition border border-transparent">
+                <div class="bg-amber-50 text-amber-500 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-arrow-up-right-dots text-base"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-gray-800">Withdraw</div>
+                    <div class="text-[10px] text-gray-400">My withdraw history</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Navigation List Options -->
+        <div class="bg-white rounded-2xl shadow-sm divide-y divide-gray-100 overflow-hidden">
+            <a href="notification.html" class="flex items-center justify-between p-4 hover:bg-gray-50 transition">
+                <div class="flex items-center space-x-3 text-xs font-bold text-gray-800">
+                    <i class="fa-solid fa-bell text-emerald-500 text-sm w-5"></i>
+                    <span>Notification</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+            </a>
+            <a href="gifts.html" class="flex items-center justify-between p-4 hover:bg-gray-50 transition">
+                <div class="flex items-center space-x-3 text-xs font-bold text-gray-800">
+                    <i class="fa-solid fa-gift text-emerald-500 text-sm w-5"></i>
+                    <span>Gifts</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+            </a>
+            <a href="statistics.html" class="flex items-center justify-between p-4 hover:bg-gray-50 transition">
+                <div class="flex items-center space-x-3 text-xs font-bold text-gray-800">
+                    <i class="fa-solid fa-chart-simple text-emerald-500 text-sm w-5"></i>
+                    <span>Game statistics</span>
+                </div>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+            </a>
+            <a href="" class="flex items-center justify-between p-4 hover:bg-gray-50 transition">
+                <div class="flex items-center space-x-3 text-xs font-bold text-gray-800">
+                    <i class="fa-solid fa-globe text-emerald-500 text-sm w-5"></i>
+                    <span>Language</span>
+                </div>
+                <div class="flex items-center space-x-2 text-xs text-gray-400">
+                    <span>English</span>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-300"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- Service Center Section -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm">
+            <h3 class="text-xs font-bold text-gray-700 mb-3">Service center</h3>
+            <div class="grid grid-cols-3 gap-y-4 gap-x-2 text-center">
+                <a href="" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-gear text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">Settings</span>
+                </a>
+                <a href="feedback.html" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-comment-dots text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">Feedback</span>
+                </a>
+                <a href="announcement.html" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-bullhorn text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">Announcement</span>
+                </a>
+                <a href="support.html" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-headset text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">Customer Service</span>
+                </a>
+                <a href="guide.html" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-book-open text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">Beginner's Guide</span>
+                </a>
+                <a href="about.html" class="flex flex-col items-center hover:opacity-80 transition">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 mb-1">
+                        <i class="fa-solid fa-circle-info text-base"></i>
+                    </div>
+                    <span class="text-[11px] font-medium text-gray-700">About us</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Log out Button -->
+        <div>
+            <button onclick="handleLogout()" class="w-full py-3.5 bg-white border border-emerald-500 text-emerald-500 hover:bg-emerald-50 font-bold text-xs rounded-2xl shadow-sm transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-power-off text-sm"></i>
+                <span>Log out</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around items-center shadow-lg z-50">
+        <!-- Home -->
+        <a href="dashboard.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Home</span>
+        </a>
+        <!-- Activity -->
+        <a href="activity.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-chart-line text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Activity</span>
+        </a>
+        <!-- Deposit -->
+        <a href="deposit.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-wallet text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Deposit</span>
+        </a>
+        <!-- Withdraw -->
+        <a href="withdraw.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-arrow-up-from-bracket text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Withdraw</span>
+        </a>
+        <!-- Profile -->
+        <a href="profile.html" class="flex flex-col items-center text-emerald-600">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Profile</span>
+        </a>
+    </div>
+
+    <!-- Firebase Real-time Script Logic (Fixed to 320) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBz-SPwj65Eg9XCIVBLxHu1G_c0YYkI_vY",
+          authDomain: "sikka99-fb62e.firebaseapp.com",
+          projectId: "sikka99-fb62e",
+          storageBucket: "sikka99-fb62e.firebasestorage.app",
+          messagingSenderId: "1050632951434",
+          appId: "1:1050632951434:web:03b6788ef5416f873d3f73",
+          measurementId: "G-1YK1QH5WHV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const userId = "VGY28389";
+
+        async function initRealtimeData() {
+            const userDocRef = doc(db, "users", userId);
+            
+            try {
+                await setDoc(userDocRef, { balance: 320.00, safeBalance: 0.00 }, { merge: true });
+            } catch (err) {
+                console.error("Error setting balance:", err);
+            }
+
+            onSnapshot(userDocRef, (docSnap) => {
+                document.getElementById('userLiveBalance').innerText = '₹320.00';
+                document.getElementById('safeBalance').innerText = '₹0.00';
+            }, (error) => {
+                console.error("Firebase sync error:", error);
+            });
+        }
+
+        window.fetchUserBalance = function() {
+            document.getElementById('userLiveBalance').innerText = '₹320.00';
+            alert("Balance refreshed: ₹320.00");
+        };
+
+        window.copyUID = function() {
+            navigator.clipboard.writeText("VGY28389");
+            alert("UID VGY28389 copied successfully!");
+        };
+
+        window.handleLogout = function() {
+            if(confirm("Are you sure you want to log out?")) {
+                window.location.href = "index.html";
+            }
+        };
+
+        initRealtimeData();
+    </script>
+</body>
+  </html>
