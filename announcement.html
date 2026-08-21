@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+    </style>
+</head>
+<body class="bg-[#f7f8fa] min-h-screen flex flex-col justify-between text-gray-800">
+
+    <div>
+        <!-- Top Header Bar -->
+        <div class="bg-custom-green px-4 py-3.5 flex items-center justify-between shadow-md sticky top-0 z-50">
+            <a href="profile.html" class="text-white hover:text-gray-100 transition p-1">
+                <i class="fa-solid fa-chevron-left text-base"></i>
+            </a>
+            <h1 class="text-base font-bold text-white absolute left-1/2 -translate-x-1/2">Announcements / घोषणाएं</h1>
+            <div></div>
+        </div>
+
+        <!-- Language Switcher Tabs -->
+        <div class="bg-white px-4 py-2.5 shadow-sm flex space-x-2 border-b border-gray-100 sticky top-[52px] z-40">
+            <button onclick="switchLang('en')" id="btn-en" class="flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm">English</button>
+            <button onclick="switchLang('hi')" id="btn-hi" class="flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition">हिंदी (Hindi)</button>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-4 space-y-4 max-w-lg mx-auto pb-10">
+
+            <!-- ENGLISH CONTENT -->
+            <div id="content-en" class="space-y-4">
+                
+                <!-- Welcome Banner Card -->
+                <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-2xl p-4 text-white shadow-md">
+                    <div class="flex items-center space-x-2.5 mb-2">
+                        <i class="fa-solid fa-bullhorn text-lg text-emerald-200"></i>
+                        <h2 class="text-sm font-bold">Welcome to Sikka 99!</h2>
+                    </div>
+                    <p class="text-xs leading-relaxed text-emerald-50">
+                        Welcome to India's most trusted and popular entertainment gaming platform! Experience lightning-fast deposits, secure gameplay, and instant withdrawals 24/7.
+                    </p>
+                </div>
+
+                <!-- Notice 1: Mystery Rewards -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="text-sm font-bold text-gray-800">Win Mystery Rewards Daily</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Submit helpful feedback or stay active on our platform to get a chance to win exclusive mystery rewards and bonuses directly in your game wallet!
+                    </p>
+                    <span class="text-[10px] text-gray-400 mt-2 block"><i class="fa-regular fa-clock mr-1"></i> Updated Today</span>
+                </div>
+
+                <!-- Notice 2: Safe & Fast Transactions -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-sm font-bold text-gray-800">Secure & Instant Transactions</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        We ensure 100% secure payment gateway integrations. Always use correct UTR/Reference numbers while depositing to avoid any delays in wallet updates.
+                    </p>
+                    <span class="text-[10px] text-gray-400 mt-2 block"><i class="fa-regular fa-clock mr-1"></i> Ongoing Service</span>
+                </div>
+
+            </div>
+
+            <!-- HINDI CONTENT -->
+            <div id="content-hi" class="space-y-4 hidden">
+                
+                <!-- Welcome Banner Card (Hindi) -->
+                <div class="bg-gradient-to-r from-emerald-600 to-teal-500 rounded-2xl p-4 text-white shadow-md">
+                    <div class="flex items-center space-x-2.5 mb-2">
+                        <i class="fa-solid fa-bullhorn text-lg text-emerald-200"></i>
+                        <h2 class="text-sm font-bold">Sikka 99 में आपका स्वागत है!</h2>
+                    </div>
+                    <p class="text-xs leading-relaxed text-emerald-50">
+                        भारत के सबसे भरोसेमंद और लोकप्रिय मनोरंजन गेमिंग प्लेटफॉर्म पर आपका स्वागत है! यहाँ आपको मिलते हैं सुपर-फास्ट डिपॉजिट, सुरक्षित गेमप्ले और 24/7 तुरंत विदड्रॉल।
+                    </p>
+                </div>
+
+                <!-- Notice 1: Mystery Rewards (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="text-sm font-bold text-gray-800">रोज़ जीतें मिस्ट्री रिवार्ड्स (Mystery Rewards)</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        हमारे प्लेटफॉर्म पर फीडबैक दें या एक्टिव रहें और पाइए खास मिस्ट्री रिवार्ड्स जीतने का मौका जो सीधे आपके वॉलेट में जोड़े जाते हैं!
+                    </p>
+                    <span class="text-[10px] text-gray-400 mt-2 block"><i class="fa-regular fa-clock mr-1"></i> आज अपडेट किया गया</span>
+                </div>
+
+                <!-- Notice 2: Safe & Fast Transactions (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-sm font-bold text-gray-800">सुरक्षित और तेज लेनदेन</h3>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        हम 100% सुरक्षित पेमेंट सिस्टम प्रदान करते हैं। डिपॉजिट करते समय हमेशा सही UTR नंबर ही दर्ज करें ताकि आपका बैलेंस बिना किसी रुकावट के तुरंत अपडेट हो सके।
+                    </p>
+                    <span class="text-[10px] text-gray-400 mt-2 block"><i class="fa-regular fa-clock mr-1"></i> सक्रिय सेवा</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script for Switching Language Smoothly -->
+    <script>
+        function switchLang(lang) {
+            const enContent = document.getElementById('content-en');
+            const hiContent = document.getElementById('content-hi');
+            const btnEn = document.getElementById('btn-en');
+            const btnHi = document.getElementById('btn-hi');
+
+            if (lang === 'en') {
+                enContent.classList.remove('hidden');
+                hiContent.classList.add('hidden');
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            } else {
+                hiContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            }
+        }
+    </script>
+</body>
+</html>
