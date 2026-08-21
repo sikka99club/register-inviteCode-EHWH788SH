@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikka 99 - Attendance Bonus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+        @keyframes popUp {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop {
+            animation: popUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen pb-24">
+
+    <!-- Top Header Bar -->
+    <div class="bg-white px-4 py-3.5 flex items-center shadow-sm relative sticky top-0 z-50">
+        <a href="activity.html" class="text-gray-700 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </a>
+        <h1 class="absolute left-1/2 -translate-x-1/2 text-base font-bold text-gray-800">Attendance</h1>
+    </div>
+
+    <!-- Red Banner Header Section -->
+    <div class="bg-[#f23c3c] text-white px-4 pt-4 pb-8 relative overflow-hidden">
+        <div class="flex justify-between items-start">
+            <div class="z-10 w-full">
+                <h2 class="text-xl font-black tracking-tight">Attendance bonus</h2>
+                <p class="text-[11px] text-red-100 mt-0.5 leading-snug">Get rewards based on consecutive login days</p>
+                
+                <!-- Consecutive Badge -->
+                <div class="mt-3 inline-flex items-center bg-red-600/60 rounded-full px-3 py-1 text-xs font-semibold shadow-inner border border-red-500">
+                    Attended consecutively <span class="text-yellow-300 ml-1 font-bold" id="consecutiveDaysCount">0</span> Day
+                </div>
+
+                <div class="mt-4">
+                    <span class="text-[11px] text-red-100 block font-medium">Accumulated</span>
+                    <span class="text-2xl font-black tracking-wider block mt-0.5" id="accumulatedBonus">₹0.00</span>
+                </div>
+
+                <!-- Game Rules & Attendance History Buttons Row -->
+                <div class="flex items-center gap-3 mt-4">
+                    <button onclick="openRulesModal()" class="bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 font-bold text-xs px-5 py-2 rounded-full shadow-md hover:brightness-105 transition">
+                        Game Rules
+                    </button>
+                    <button onclick="openHistoryModal()" class="bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 font-bold text-xs px-4 py-2 rounded-full shadow-md hover:brightness-105 transition">
+                        Attendance history
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reward Grid Section -->
+    <div class="px-4 -mt-3 relative z-20 space-y-3">
+        
+        <!-- Days 1 to 3 Grid -->
+        <div class="grid grid-cols-3 gap-3">
+            <!-- Day 1 -->
+            <div onclick="claimDay(1)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹1.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">1 Day</span>
+            </div>
+            <!-- Day 2 -->
+            <div onclick="claimDay(2)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹1.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">2 Day</span>
+            </div>
+            <!-- Day 3 -->
+            <div onclick="claimDay(3)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹3.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">3 Day</span>
+            </div>
+        </div>
+
+        <!-- Days 4 to 6 Grid -->
+        <div class="grid grid-cols-3 gap-3">
+            <!-- Day 4 -->
+            <div onclick="claimDay(4)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹5.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">4 Day</span>
+            </div>
+            <!-- Day 5 -->
+            <div onclick="claimDay(5)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹10.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">5 Day</span>
+            </div>
+            <!-- Day 6 -->
+            <div onclick="claimDay(6)" class="bg-white rounded-2xl p-3 text-center shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex flex-col items-center justify-between">
+                <span class="text-xs font-bold text-gray-700">₹10.00</span>
+                <div class="my-2 w-12 h-12 flex items-center justify-center">
+                    <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/coin-DS--QtUV.png?raw=true" alt="Coin" class="w-full h-full object-contain">
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium">6 Day</span>
+            </div>
+        </div>
+
+        <!-- Day 7 Special Gift Card -->
+        <div onclick="claimDay(7)" class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 cursor-pointer hover:border-emerald-500 transition flex items-center justify-between">
+            <div class="w-24 h-20 flex items-center justify-center">
+                <img src="https://github.com/casinolootprmo/potential-memory/blob/5d132dac0ec82144c172573bba22ee2044f6d39f/day7Bg-qRdDEgwv.png?raw=true" alt="Gift Box" class="w-full h-full object-contain">
+            </div>
+            <div class="text-right">
+                <span class="text-base font-bold text-gray-800">₹50.00</span>
+                <span class="block text-xs text-gray-400 font-medium mt-0.5">7 Day</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Fixed Bottom Attendance Action Button -->
+    <div class="fixed bottom-16 left-0 right-0 px-4 z-40">
+        <button onclick="performAttendance()" class="w-full py-3.5 bg-custom-green text-white font-bold text-sm rounded-full shadow-lg hover:opacity-95 transition">
+            Attendance
+        </button>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around items-center shadow-lg z-50">
+        <a href="dashboard.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Home</span>
+        </a>
+        <a href="activity.html" class="flex flex-col items-center text-emerald-600">
+            <i class="fa-solid fa-chart-line text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Activity</span>
+        </a>
+        <a href="deposit.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-wallet text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Deposit</span>
+        </a>
+        <a href="withdraw.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-arrow-up-from-bracket text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Withdraw</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Profile</span>
+        </a>
+    </div>
+
+    <!-- Dark Notice Popup Modal with "Sorry You Are Not Deposit" message -->
+    <div id="customAlertModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-[100] px-6 transition-opacity duration-300">
+        <div id="modalBox" class="bg-[#333333] text-white rounded-2xl w-full max-w-xs overflow-hidden shadow-2xl text-center animate-pop py-6 px-4">
+            <!-- Top line divider graphic -->
+            <div class="w-6 h-0.5 bg-gray-400 mx-auto mb-4"></div>
+            <!-- Message Text -->
+            <div class="mb-2">
+                <p id="alertMessageText" class="text-white text-sm font-medium leading-relaxed whitespace-pre-line">Sorry You Are Not Deposit</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div id="rulesModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-[100] px-6">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl">
+            <h3 class="text-base font-bold text-gray-800 mb-3">Game Rules</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mb-5">
+                1. Log in consecutively every day to claim increasing attendance rewards.<br>
+                2. Missing a day will reset your consecutive count back to 1.<br>
+                3. Rewards are instantly credited to your accumulated bonus wallet.
+            </p>
+            <button onclick="closeRulesModal()" class="w-full py-3 bg-[#00b074] text-white font-bold text-sm rounded-full shadow-md">
+                Got it
+            </button>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-[100] px-6">
+        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl text-center">
+            <h3 class="text-base font-bold text-gray-800 mb-4">Attendance History</h3>
+            <div class="py-8 text-gray-400 text-xs font-medium">No records found yet</div>
+            <button onclick="closeHistoryModal()" class="w-full py-3 bg-[#00b074] text-white font-bold text-sm rounded-full shadow-md">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase & Interactive Logic Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBz-SPwj65Eg9XCIVBLxHu1G_c0YYkI_vY",
+          authDomain: "sikka99-fb62e.firebaseapp.com",
+          projectId: "sikka99-fb62e",
+          storageBucket: "sikka99-fb62e.firebasestorage.app",
+          messagingSenderId: "1050632951434",
+          appId: "1:1050632951434:web:03b6788ef5416f873d3f73",
+          measurementId: "G-1YK1QH5WHV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.openRulesModal = function() {
+            document.getElementById('rulesModal').classList.remove('hidden');
+        }
+        window.closeRulesModal = function() {
+            document.getElementById('rulesModal').classList.add('hidden');
+        }
+        window.openHistoryModal = function() {
+            document.getElementById('historyModal').classList.remove('hidden');
+        }
+        window.closeHistoryModal = function() {
+            document.getElementById('historyModal').classList.add('hidden');
+        }
+
+        window.showAlertModal = function(message) {
+            document.getElementById('alertMessageText').innerText = message;
+            document.getElementById('customAlertModal').classList.remove('hidden');
+            // Auto hide notice popup after 2 seconds
+            setTimeout(() => {
+                document.getElementById('customAlertModal').classList.add('hidden');
+            }, 2200);
+        }
+
+        window.performAttendance = function() {
+            showAlertModal("Sorry You Are Not Deposit");
+        }
+
+        window.claimDay = function(dayNum) {
+            showAlertModal("Sorry You Are Not Deposit");
+        }
+    </script>
+</body>
+</html>
