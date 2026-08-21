@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikka 99 - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .popup-anim { animation: scaleIn 0.3s ease-out; }
+        @keyframes scaleIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen pb-28">
+
+    <!-- Top Banner / Poster -->
+    <div class="w-full bg-black relative">
+        <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/acca913ecb9c3bb9fc09250fa5780c0dc1844c36/file_0000000030b082119a7c9c2a70bd96ee.png" alt="Top Poster" class="w-full h-40 object-cover">
+    </div>
+
+    <!-- Balance & Bonus Card -->
+    <div class="px-4 -mt-4 relative z-10">
+        <div class="bg-white rounded-2xl shadow-md p-4 flex justify-between items-center border border-emerald-100">
+            <div>
+                <span class="text-xs text-gray-400 block">My Current Balance </span>
+                <span class="text-2xl font-bold text-emerald-600">₹320.00</span>
+            </div>
+            <div class="flex space-x-2">
+                <a href="deposit.html" class="bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow hover:bg-emerald-600 transition flex items-center">
+                    <i class="fa-solid fa-wallet mr-1"></i> Deposit
+                </a>
+                <a href="withdraw.html" class="bg-gray-800 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow hover:bg-gray-900 transition flex items-center">
+                    <i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> Withdraw
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Text Marquee -->
+    <div class="px-4 mt-3">
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl overflow-hidden py-2 px-3 shadow-sm flex items-center">
+            <i class="fa-solid fa-bullhorn text-emerald-600 mr-2 shrink-0"></i>
+            <div class="overflow-hidden whitespace-nowrap w-full">
+                <marquee behavior="scroll" direction="left" scrollamount="5" class="text-xs font-bold text-emerald-800">
+                    Welcome To Our Indian Most Trusted Platform &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Welcome To Our Indian Most Trusted Platform &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; Welcome To Our Indian Most Trusted Platform
+                </marquee>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="px-4 mt-4 flex space-x-3 overflow-x-auto no-scrollbar py-1">
+        <button class="bg-emerald-600 text-white px-5 py-2 rounded-full text-xs font-semibold shadow-sm shrink-0">Popular</button>
+        <button class="bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold shadow-sm shrink-0 border border-gray-200">Lottery</button>
+        <button class="bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold shadow-sm shrink-0 border border-gray-200">Mini games</button>
+        <button class="bg-white text-gray-600 px-5 py-2 rounded-full text-xs font-semibold shadow-sm shrink-0 border border-gray-200">Slots</button>
+    </div>
+
+    <!-- Games Section -->
+    <div class="px-4 mt-4 space-y-6">
+        
+        <!-- Lottery / Popular Games -->
+        <div>
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold text-gray-800 text-sm flex items-center">
+                    <i class="fa-solid fa-fire text-orange-500 mr-2"></i> Lottery & Popular
+                </h3>
+                <span class="text-xs text-emerald-600 font-semibold cursor-pointer">All ></span>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+                <!-- Wingo -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/wingo-green.png" alt="Wingo" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Win Go</span>
+                </div>
+                <!-- K3 -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/k3-green.png" alt="K3" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">K3 Game</span>
+                </div>
+                <!-- Moto Racing -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/moto-green.png" alt="Moto Racing" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Moto Race</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slots & Mini Games -->
+        <div>
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold text-gray-800 text-sm flex items-center">
+                    <i class="fa-solid fa-gamepad text-emerald-500 mr-2"></i> Slots & Mini Games
+                </h3>
+                <span class="text-xs text-emerald-600 font-semibold cursor-pointer">All ></span>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+                <!-- Fortune Gems 3 -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/hu_ag_JILI_AG_JILI_FortuneGems3.png" alt="Fortune Gems 3" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Fortune Gems 3</span>
+                </div>
+                <!-- Aviator -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/184d9b56a40c494ba01409ede790aa4b.png" alt="Aviator" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Aviator</span>
+                </div>
+                <!-- Dice -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/b12394f5abba4bed948c6b21f9b47b1b.png" alt="Dice" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Dice Game</span>
+                </div>
+                <!-- Book of Gold -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/hu_ag_JILI_AG_JILI_BookOfGold.png" alt="Book of Gold" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Book Of Gold</span>
+                </div>
+                <!-- Bone Fortune -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/hu_ag_JILI_AG_JILI_BoneFortune.png" alt="Bone Fortune" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Bone Fortune</span>
+                </div>
+                <!-- Ali Baba -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/dd6acffefe3b79e3d56c2c89020da78415c339a1/hu_ag_JILI_AG_JILI_AliBaba.png" alt="Ali Baba" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Ali Baba</span>
+                </div>
+                <!-- Mines -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/ubiquitous-octo-spoon/b8a014a6dc2463b9a991d4e6d62935ea8bdb1be4/1a94d40b52824fe9893b28b7ff52bf55.png" alt="Mines" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Mines</span>
+                </div>
+                <!-- Ganesh Fortune -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/redesigned-invention/afd2b7dfba26b62e7538a17fd3948a103ffd4479/hu_ag_PG_42.avif" alt="Ganesh Fortune" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Ganesh Fortune</span>
+                </div>
+                <!-- Fortune Gems -->
+                <div onclick="showPopup()" class="bg-white rounded-2xl p-2 shadow-md border border-gray-100 flex flex-col justify-between cursor-pointer hover:scale-[1.02] transition">
+                    <img src="https://raw.githubusercontent.com/casinolootprmo/redesigned-invention/afd2b7dfba26b62e7538a17fd3948a103ffd4479/hu_ag_TADA_AG_TADA_FortuneGems_109.avif" alt="Fortune Gems" class="w-full rounded-xl object-cover h-24">
+                    <span class="text-[11px] font-bold text-gray-700 mt-2 truncate">Fortune Gems</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Tips Popup Modal with Animation -->
+    <div id="gamePopup" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-[100] px-6">
+        <div class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl popup-anim">
+            <div class="bg-custom-green py-6 text-center text-white relative">
+                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-white/40">
+                    <i class="fa-solid fa-check text-2xl text-white"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Tips</h2>
+            </div>
+            <div class="p-6 text-center text-gray-600">
+                <p class="mb-2 text-sm font-medium">This game requires a deposit to enter.</p>
+                <p class="mb-6 text-sm font-medium">Deposit now?</p>
+                <div class="flex space-x-3">
+                    <button onclick="closePopup()" class="w-full py-3 bg-gray-100 rounded-full font-bold text-gray-500 hover:bg-gray-200 transition">cancel</button>
+                    <button onclick="window.location.href='deposit.html'" class="w-full py-3 bg-custom-green rounded-full font-bold text-white shadow-md hover:opacity-90 transition">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smaller Terms Notice -->
+    <div class="px-6 mt-8 mb-6">
+        <p class="text-[10px] text-gray-400 text-center leading-tight">
+            Strictly 18+ Allowed Only. Accessing this platform confirms you meet the legal age requirements. Please play responsibly.
+        </p>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 py-2 px-4 flex justify-around items-center shadow-lg z-50">
+        <!-- Home -->
+        <a href="dashboard.html" class="flex flex-col items-center text-emerald-600">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Home</span>
+        </a>
+        <!-- Activity -->
+        <a href="activity.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-chart-line text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Activity</span>
+        </a>
+        <!-- Deposit -->
+        <a href="deposit.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-wallet text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Deposit</span>
+        </a>
+        <!-- Withdraw -->
+        <a href="withdraw.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-arrow-up-from-bracket text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Withdraw</span>
+        </a>
+        <!-- Profile -->
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-emerald-600 transition">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="text-[10px] font-semibold mt-1">Profile</span>
+        </a>
+    </div>
+
+    <!-- Firebase SDK & Real-Time Database Initialization -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBz-SPwj65Eg9XCIVBLxHu1G_c0YYkI_vY",
+          authDomain: "sikka99-fb62e.firebaseapp.com",
+          projectId: "sikka99-fb62e",
+          storageBucket: "sikka99-fb62e.firebasestorage.app",
+          messagingSenderId: "1050632951434",
+          appId: "1:1050632951434:web:03b6788ef5416f873d3f73",
+          measurementId: "G-1YK1QH5WHV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.showPopup = function() {
+            document.getElementById('gamePopup').classList.remove('hidden');
+        }
+
+        window.closePopup = function() {
+            document.getElementById('gamePopup').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
+<!-- TOP WINNERS  -->
+    <div class="px-4 mt-8 space-y-4">
+        <h2 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+            <i class="fa-solid fa-crown text-emerald-600 text-base"></i> Top Winners Podium
+        </h2>
+        
+        <div class="flex items-end justify-center gap-3 pt-6 pb-2">
+            <!-- Rank 2 (Silver Type) -->
+            <div class="bg-white w-28 rounded-t-2xl p-3 text-center flex flex-col items-center justify-between border-t-2 border-slate-300 h-36 relative shadow-md bg-gradient-to-b from-slate-100 via-white to-white">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-slate-400 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] font-black shadow-md">2</div>
+                <img src="https://github.com/casinolootprmo/super-duper-broccoli/blob/4fc72cdccb9d4d596a2c9ac201a6bb51fbc79305/file_00000000d03c7208bd635a59263283b0.png?raw=true" class="w-10 h-10 rounded-full border border-slate-300 shadow-sm mt-1 object-cover">
+                <div class="mt-2 w-full">
+                    <p class="text-[10px] font-bold text-gray-600 truncate">VG***46*</p>
+                    <p class="text-[11px] font-extrabold text-emerald-600 mt-0.5 font-mono">₹46,009</p>
+                </div>
+            </div>
+
+            <!-- Rank 1 (Green Theme) -->
+            <div class="bg-white w-32 rounded-t-2xl p-3 text-center flex flex-col items-center justify-between border-t-4 border-emerald-500 h-44 relative bg-gradient-to-b from-emerald-500/15 via-white to-white shadow-lg">
+                <div class="absolute -top-7 left-1/2 transform -translate-x-1/2 text-emerald-500 text-lg animate-bounce"><i class="fa-solid fa-crown"></i></div>
+                <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] font-black shadow-lg">1</div>
+                <img src="https://github.com/casinolootprmo/super-duper-broccoli/blob/4fc72cdccb9d4d596a2c9ac201a6bb51fbc79305/file_00000000d03c7208bd635a59263283b0.png?raw=true" class="w-12 h-12 rounded-full border-2 border-emerald-500 shadow-md mt-2 object-cover">
+                <div class="mt-2 w-full">
+                    <p class="text-[11px] font-bold text-gray-800 truncate">VG***12*</p>
+                    <p class="text-xs font-extrabold text-emerald-600 mt-0.5 font-mono">₹50,099</p>
+                </div>
+            </div>
+
+            <!-- Rank 3 (Patla Red Type) -->
+            <div class="bg-white w-28 rounded-t-2xl p-3 text-center flex flex-col items-center justify-between border-t border-red-400 h-32 relative shadow-md bg-gradient-to-b from-red-500/5 via-white to-white">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-[10px] font-black shadow-md">3</div>
+                <img src="https://github.com/casinolootprmo/super-duper-broccoli/blob/4fc72cdccb9d4d596a2c9ac201a6bb51fbc79305/file_00000000d03c7208bd635a59263283b0.png?raw=true" class="w-10 h-10 rounded-full border border-red-300 shadow-sm mt-1 object-cover">
+                <div class="mt-2 w-full">
+                    <p class="text-[10px] font-bold text-gray-600 truncate">VG***88*</p>
+                    <p class="text-[11px] font-extrabold text-emerald-600 mt-0.5 font-mono">₹20,890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS / DISCLAIMER -->
+    <div class="px-6 mt-6">
+        <div class="bg-white rounded-2xl p-4 border border-red-100 shadow-sm">
+            <div class="flex items-center gap-2 mb-2 text-red-500">
+                <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                <h3 class="text-xs font-bold uppercase tracking-wider">Terms & Risk Disclosure</h3>
+            </div>
+            <ul class="space-y-1.5 text-[11px] text-gray-500 leading-relaxed">
+                <li class="flex items-start gap
