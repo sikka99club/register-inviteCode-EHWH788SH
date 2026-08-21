@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide & Tutorials - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+    </style>
+</head>
+<body class="bg-[#f7f8fa] min-h-screen flex flex-col justify-between text-gray-800">
+
+    <div>
+        <!-- Top Header Bar -->
+        <div class="bg-custom-green px-4 py-3.5 flex items-center justify-between shadow-md sticky top-0 z-50">
+            <a href="profile.html" class="text-white hover:text-gray-100 transition p-1">
+                <i class="fa-solid fa-chevron-left text-base"></i>
+            </a>
+            <h1 class="text-base font-bold text-white absolute left-1/2 -translate-x-1/2">Guide / मदद केंद्र</h1>
+            <div></div>
+        </div>
+
+        <!-- Language Switcher Tabs -->
+        <div class="bg-white px-4 py-2.5 shadow-sm flex space-x-2 border-b border-gray-100 sticky top-[52px] z-40">
+            <button onclick="switchLang('en')" id="btn-en" class="flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm">English</button>
+            <button onclick="switchLang('hi')" id="btn-hi" class="flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition">हिंदी (Hindi)</button>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-4 space-y-4 max-w-lg mx-auto pb-10">
+
+            <!-- ENGLISH CONTENT -->
+            <div id="content-en" class="space-y-4">
+                
+                <!-- Section 1: Registration -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">How to Register / Account Creation</h2>
+                    </div>
+                    <ol class="space-y-2 text-xs text-gray-600 pl-4 list-decimal leading-relaxed">
+                        <li>Click on the <b>Register</b> or <b>Sign Up</b> button on the home page.</li>
+                        <li>Enter your active mobile number and create a strong password.</li>
+                        <li>Enter the referral code (if you have one) and click on <b>Register</b>.</li>
+                        <li>Your account will be successfully created! Log in to access the dashboard.</li>
+                    </ol>
+                </div>
+
+                <!-- Section 2: How to Deposit -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">How to Deposit Money</h2>
+                    </div>
+                    <ol class="space-y-2 text-xs text-gray-600 pl-4 list-decimal leading-relaxed">
+                        <li>Go to the dashboard and click on the <b>Deposit</b> button.</li>
+                        <li>Select your preferred payment method (e.g., UPI, QR Code, or Gateway).</li>
+                        <li>Enter the amount you want to add and click next.</li>
+                        <li>Complete the payment on your UPI app (PhonePe/GPay/Paytm).</li>
+                        <li>Copy and paste/submit the 12-digit UTR/Reference number. Your balance will update instantly!</li>
+                    </ol>
+                </div>
+
+                <!-- Section 3: Important Rules -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-amber-500">
+                        <div class="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">Important Rules & Notes</h2>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-600 pl-4 list-disc leading-relaxed">
+                        <li>Minimum withdrawal limit is based on your gameplay and a minimum ₹200 deposit requirement.</li>
+                        <li>Always submit the correct UTR number for fast deposit approvals.</li>
+                        <li>For any issues, contact 24/7 Live Customer Support from your profile menu.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- HINDI CONTENT -->
+            <div id="content-hi" class="space-y-4 hidden">
+                
+                <!-- Section 1: Registration (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">अकाउंट रजिस्टर (Register) कैसे करें?</h2>
+                    </div>
+                    <ol class="space-y-2 text-xs text-gray-600 pl-4 list-decimal leading-relaxed">
+                        <li>होमपेज पर दिए गए <b>Register</b> या <b>Sign Up</b> बटन पर क्लिक करें।</li>
+                        <li>अपना चालू मोबाइल नंबर दर्ज करें और एक मजबूत पासवर्ड बनाएं।</li>
+                        <li>यदि आपके पास इनवाइट/रेफरल कोड है तो उसे भरें और सीधे <b>Register</b> पर क्लिक करें।</li>
+                        <li>आपका अकाउंट सफलतापूर्वक बन जाएगा, अब आप लॉगिन कर सकते हैं।</li>
+                    </ol>
+                </div>
+
+                <!-- Section 2: How to Deposit (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">पैसा डिपॉजिट (Deposit) कैसे करें?</h2>
+                    </div>
+                    <ol class="space-y-2 text-xs text-gray-600 pl-4 list-decimal leading-relaxed">
+                        <li>डैशबोर्ड पर जाएं और <b>Deposit</b> विकल्प पर क्लिक करें।</li>
+                        <li>अपनी पसंद का पेमेंट तरीका चुनें (जैसे- UPI, QR Code या Gateway)।</li>
+                        <li>जितनी राशि (Amount) जोड़नी है उसे दर्ज करें।</li>
+                        <li>अपने UPI ऐप (PhonePe/GPay/Paytm) से पेमेंट पूरा करें।</li>
+                        <li>पेमेंट करने के बाद 12-अंकों का UTR/Reference नंबर दर्ज करें। बैलेंस तुरंत जुड़ जाएगा!</li>
+                    </ol>
+                </div>
+
+                <!-- Section 3: Important Rules (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-3 text-amber-500">
+                        <div class="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">जरूरी नियम और निर्देश</h2>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-600 pl-4 list-disc leading-relaxed">
+                        <li>पैसे निकालने (Withdraw) के लिए न्यूनतम ₹200 का डिपॉजिट होना आवश्यक है।</li>
+                        <li>डिपॉजिट करते समय हमेशा सही UTR नंबर ही सबमिट करें ताकि पेमेंट तुरंत अप्रूव हो सके।</li>
+                        <li>किसी भी समस्या के लिए प्रोफाइल मेनू से 24/7 लाइव कस्टमर सपोर्ट से संपर्क करें।</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script for Switching Language Smoothly -->
+    <script>
+        function switchLang(lang) {
+            const enContent = document.getElementById('content-en');
+            const hiContent = document.getElementById('content-hi');
+            const btnEn = document.getElementById('btn-en');
+            const btnHi = document.getElementById('btn-hi');
+
+            if (lang === 'en') {
+                enContent.classList.remove('hidden');
+                hiContent.classList.add('hidden');
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            } else {
+                hiContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            }
+        }
+    </script>
+</body>
+</html>
