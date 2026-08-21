@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f3f4f6; }
+        .gradient-top { background: linear-gradient(135deg, #00d285 0%, #00b074 100%); }
+        #customToast { transition: opacity 0.3s ease, transform 0.3s ease; }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Top Header -->
+    <div class="gradient-top px-4 py-3 flex items-center justify-between text-white sticky top-0 z-40 shadow-sm">
+        <a href="profile.html" class="text-white text-lg hover:text-emerald-200 transition">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-base font-bold">VIP</h1>
+        <div class="w-5"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="px-4 pt-4 space-y-4">
+        
+        <!-- Experience & Payout Cards Row -->
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white rounded-2xl p-4 shadow-sm text-center">
+                <div class="text-xl font-black text-emerald-500 mb-0.5">0 EXP</div>
+                <div class="text-[11px] text-gray-400 font-medium">My experience</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-sm text-center">
+                <div class="text-xl font-black text-gray-800 mb-0.5">0 Days</div>
+                <div class="text-[11px] text-gray-400 font-medium">Payout time</div>
+            </div>
+        </div>
+
+        <!-- Notice Banner -->
+        <div class="bg-gray-100 border border-gray-200 text-gray-500 text-[10px] py-2 px-3 rounded-xl text-center font-medium">
+            VIP level rewards are settled at 2:00 am on the 1st of every month
+        </div>
+
+        <!-- VIP Level Card Banner -->
+        <div class="relative rounded-2xl p-5 text-white shadow-md overflow-hidden bg-gradient-to-br from-slate-400 via-slate-500 to-slate-600">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://github.com/sikka99club/studious-octo-spoon/blob/bfd5104ea7c0a4456857a2e8ad87cfb2884d9044/1-CfpcF2u4.png?raw=true" alt="VIP1" class="h-6 object-contain">
+                        <span class="bg-red-500/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center space-x-1">
+                            <i class="fa-solid fa-lock text-[9px]"></i>
+                            <span>Not open yet</span>
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-white/80 mt-1">Upgrading VIP1 requires<br><strong class="text-white">3000EXP</strong></p>
+                </div>
+                <div class="w-16 h-16 flex items-center justify-center">
+                    <img src="https://github.com/sikka99club/studious-octo-spoon/blob/bfd5104ea7c0a4456857a2e8ad87cfb2884d9044/1-27ESYDeX.png?raw=true" alt="Silver Star" class="w-full h-full object-contain drop-shadow-md">
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <span class="bg-white/20 text-white text-[10px] font-semibold px-2 py-0.5 rounded">Bet ₹1=1EXP</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="space-y-1">
+                <div class="w-full bg-black/20 h-2 rounded-full overflow-hidden">
+                    <div class="bg-white h-full w-0 rounded-full"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-white/80 font-medium">
+                    <span>0/3000</span>
+                    <span>3000 EXP can be leveled up</span>
+                </div>
+            </div>
+            <div class="absolute bottom-2 right-3 text-[10px] text-white/40 font-bold uppercase tracking-wider">VIP1</div>
+        </div>
+
+        <!-- VIP Benefits Level Section -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 text-xs font-bold text-gray-800 pb-2 border-b border-gray-100">
+                <span class="text-emerald-500"><i class="fa-solid fa-gem text-sm"></i></span>
+                <span>VIP1 Benefits level</span>
+            </div>
+
+            <!-- Benefit Item 1: Level up rewards -->
+            <div class="flex items-center justify-between py-1">
+                <div class="flex items-center space-x-3">
+                    <img src="https://github.com/sikka99club/studious-octo-spoon/blob/bfd5104ea7c0a4456857a2e8ad87cfb2884d9044/1-DZfVIPBG.png?raw=true" alt="Level up rewards" class="w-10 h-10 object-contain">
+                    <div>
+                        <div class="text-xs font-bold text-gray-800">Level up rewards</div>
+                        <div class="text-[10px] text-gray-400">Each account can only receive 1 time</div>
+                    </div>
+                </div>
+                <div class="space-y-1.5 text-right">
+                    <div class="flex items-center justify-end space-x-1.5 border border-amber-200 bg-amber-50/50 px-2 py-0.5 rounded-lg">
+                        <img src="https://github.com/sikka99club/legendary-funicular/blob/a89ff4ee67e1493d15879b42d5f7012165dfcf7b/gold-Dr9pWTeB.png?raw=true" alt="Gold" class="w-3.5 h-3.5 object-contain">
+                        <span class="text-xs font-bold text-amber-600">60</span>
+                    </div>
+                    <div class="flex items-center justify-end space-x-1.5 border border-emerald-200 bg-emerald-50/50 px-2 py-0.5 rounded-lg">
+                        <span class="text-emerald-500 text-xs"><i class="fa-solid fa-gem text-[10px]"></i></span>
+                        <span class="text-xs font-bold text-emerald-600">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefit Item 2: Safe -->
+            <div class="flex items-center justify-between py-1 border-t border-gray-50 pt-3">
+                <div class="flex items-center space-x-3">
+                    <img src="https://github.com/sikka99club/studious-octo-spoon/blob/bfd5104ea7c0a4456857a2e8ad87cfb2884d9044/4-DbCqlgfp.png?raw=true" alt="Safe" class="w-10 h-10 object-contain">
+                    <div>
+                        <div class="text-xs font-bold text-gray-800">Safe</div>
+                        <div class="text-[10px] text-gray-400">Increase the extra income of the safe</div>
+                    </div>
+                </div>
+                <div class="border border-emerald-200 bg-emerald-50/50 px-2.5 py-1 rounded-lg flex items-center space-x-1.5">
+                    <img src="https://github.com/sikka99club/legendary-funicular/blob/a89ff4ee67e1493d15879b42d5f7012165dfcf7b/gold-Dr9pWTeB.png?raw=true" alt="Gold" class="w-3.5 h-3.5 object-contain">
+                    <span class="text-xs font-bold text-emerald-600">0.2%</span>
+                </div>
+            </div>
+
+            <!-- Benefit Item 3: Rebate rate -->
+            <div class="flex items-center justify-between py-1 border-t border-gray-50 pt-3">
+                <div class="flex items-center space-x-3">
+                    <img src="https://github.com/sikka99club/legendary-funicular/blob/a89ff4ee67e1493d15879b42d5f7012165dfcf7b/5-Cecu7B9r.png?raw=true" alt="Rebate rate" class="w-10 h-10 object-contain">
+                    <div>
+                        <div class="text-xs font-bold text-gray-800">Rebate rate</div>
+                        <div class="text-[10px] text-gray-400">Increase income of rebate</div>
+                    </div>
+                </div>
+                <div class="border border-emerald-200 bg-emerald-50/50 px-2.5 py-1 rounded-lg flex items-center space-x-1.5">
+                    <img src="https://github.com/sikka99club/legendary-funicular/blob/a89ff4ee67e1493d15879b42d5f7012165dfcf7b/gold-Dr9pWTeB.png?raw=true" alt="Gold" class="w-3.5 h-3.5 object-contain">
+                    <span class="text-xs font-bold text-emerald-600">0.6%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- History & Rules Tab Panel -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm space-y-4">
+            <div class="grid grid-cols-2 text-center border-b border-gray-100 pb-2 text-xs font-bold">
+                <div class="text-emerald-500 cursor-pointer pb-2 border-b-2 border-emerald-500">History</div>
+                <div class="text-gray-400 cursor-pointer pb-2">Rules</div>
+            </div>
+
+            <!-- Empty State Illustration -->
+            <div class="flex flex-col items-center justify-center py-6 text-center">
+                <div class="w-24 h-24 mb-2 opacity-50 flex items-center justify-center">
+                    <i class="fa-solid fa-file-lines text-6xl text-gray-300"></i>
+                </div>
+                <p class="text-xs text-gray-400 font-medium">No data</p>
+            </div>
+
+            <div>
+                <button onclick="showToast('First deposit required')" class="w-full py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition text-center shadow-sm">
+                    View All
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Animated Toast Popup Modal -->
+    <div id="customToast" class="fixed inset-0 bg-black/40 flex items-center justify-center z-[999] opacity-0 pointer-events-none">
+        <div class="bg-[#333333] text-white w-[260px] py-7 px-5 rounded-2xl shadow-2xl flex flex-col items-center text-center transform scale-95 transition-transform duration-300">
+            <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                <i class="fa-solid fa-exclamation text-3xl text-white font-black animate-bounce"></i>
+            </div>
+            <p class="text-sm font-medium tracking-wide leading-snug px-1" id="toastMessage">
+                First deposit required
+            </p>
+        </div>
+    </div>
+
+    <!-- Script Logic for Popup Animation -->
+    <script>
+        window.showToast = function(msg) {
+            const toast = document.getElementById('customToast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = msg;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.firstElementChild.classList.remove('scale-95');
+            toast.firstElementChild.classList.add('scale-100');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.firstElementChild.classList.remove('scale-100');
+                toast.firstElementChild.classList.add('scale-95');
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
