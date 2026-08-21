@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+    </style>
+</head>
+<body class="bg-[#f7f8fa] min-h-screen flex flex-col justify-between text-gray-800 relative select-none">
+
+    <div>
+        <!-- Top Header Bar -->
+        <div class="bg-custom-green px-4 py-3.5 flex items-center justify-between shadow-md sticky top-0 z-40">
+            <a href="profile.html" class="text-white hover:text-gray-100 transition p-1">
+                <i class="fa-solid fa-chevron-left text-base"></i>
+            </a>
+            <h1 class="text-base font-bold text-white absolute left-1/2 -translate-x-1/2">Feedback</h1>
+            <div></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="px-4 pt-4 max-w-lg mx-auto">
+            <!-- Feedback Textarea Box -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                <textarea id="feedbackInput" rows="6" placeholder="Welcome to feedback, please give feedback-please describe the problem in detail when providing feedback, preferably attach a screenshot of the problem you encountered, we will immediately process your feedback!" class="w-full text-xs text-gray-700 placeholder-gray-400 outline-none resize-none bg-transparent leading-relaxed"></textarea>
+            </div>
+
+            <!-- Subtitle Text -->
+            <div class="text-center mt-6 space-y-1">
+                <p class="text-gray-700 text-xs font-medium">Send helpful feedback</p>
+                <p class="text-gray-700 text-xs font-medium">Chance to win Mystery Rewards</p>
+            </div>
+
+            <!-- Astronaut Illustration Container -->
+            <div class="flex justify-center mt-6">
+                <svg viewBox="0 0 240 180" class="w-56 h-auto opacity-80">
+                    <!-- Background Moon / Crescent -->
+                    <path d="M70 120 C 60 90, 80 50, 110 40 C 90 60, 90 100, 120 125 C 100 135, 80 130, 70 120 Z" fill="#ffe156" />
+                    <!-- Sparkle -->
+                    <path d="M105 50 L 108 58 L 116 61 L 108 64 L 105 72 L 102 64 L 94 61 L 102 58 Z" fill="#ffc107" />
+                    <!-- Paper Plane -->
+                    <path d="M125 55 L 175 40 L 145 70 L 135 65 Z" fill="#00b074" />
+                    <!-- Astronaut Body & Limbs -->
+                    <rect x="90" y="80" width="45" height="40" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+                    <!-- Screen on suit -->
+                    <rect x="102" y="92" width="20" height="15" rx="3" fill="#00b074" />
+                    <!-- Helmet -->
+                    <circle cx="112" cy="65" r="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+                    <path d="M104 62 C 104 57, 120 57, 120 62 C 120 68, 104 68, 104 62 Z" fill="#1e293b" opacity="0.8"/>
+                    <!-- Legs -->
+                    <path d="M95 120 L 75 145 L 90 155 L 110 130 Z" fill="#1e3a8a" />
+                    <path d="M115 120 L 130 150 L 115 160 L 100 130 Z" fill="#1e3a8a" />
+                    <!-- Boots -->
+                    <rect x="80" y="148" width="25" height="12" rx="4" fill="#ffffff" stroke="#1e3a8a" stroke-width="2"/>
+                    <rect x="115" y="152" width="25" height="12" rx="4" fill="#ffffff" stroke="#1e3a8a" stroke-width="2"/>
+                    <!-- Hands & Document -->
+                    <circle cx="85" cy="88" r="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+                    <rect x="155" y="85" width="25" height="20" rx="3" fill="#ffc107" />
+                    <circle cx="138" cy="85" r="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+                    <!-- Ground details -->
+                    <rect x="150" y="140" width="3" height="25" fill="#94a3b8" />
+                    <circle cx="151.5" cy="138" r="5" fill="#cbd5e1" />
+                    <circle cx="50" cy="140" r="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Fixed Submit Button -->
+    <div class="p-4 bg-transparent">
+        <button type="button" onclick="submitFeedback()" class="w-full bg-custom-green text-white font-bold py-3.5 rounded-full shadow-lg hover:opacity-95 transition active:scale-95 text-sm tracking-wide">
+            Submit
+        </button>
+    </div>
+
+    <!-- Success Popup Modal (Smooth Animation) -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="modalBox" class="bg-[#333333] text-white px-8 py-9 rounded-3xl shadow-2xl flex flex-col items-center justify-center max-w-[240px] w-full transform scale-75 transition-transform duration-300">
+            <!-- Checkmark Icon -->
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                <i class="fa-solid fa-check text-white text-5xl"></i>
+            </div>
+            <!-- Popup Text -->
+            <div class="text-center font-medium text-lg leading-snug">
+                Submitted successfully
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Handling Popup Animation & Reset -->
+    <script>
+        function submitFeedback() {
+            const input = document.getElementById('feedbackInput');
+            const modal = document.getElementById('successModal');
+            const modalBox = document.getElementById('modalBox');
+
+            // Show Popup with Smooth Animation
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            modalBox.classList.remove('scale-75');
+            modalBox.classList.add('scale-100');
+
+            // Clear input text
+            input.value = '';
+
+            // Hide popup automatically after 1.8 seconds
+            setTimeout(() => {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modalBox.classList.remove('scale-100');
+                modalBox.classList.add('scale-75');
+            }, 1800);
+        }
+    </script>
+</body>
+</html>
