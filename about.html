@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us & Terms - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+    </style>
+</head>
+<body class="bg-[#f7f8fa] min-h-screen flex flex-col justify-between text-gray-800">
+
+    <div>
+        <!-- Top Header Bar -->
+        <div class="bg-custom-green px-4 py-3.5 flex items-center justify-between shadow-md sticky top-0 z-50">
+            <a href="profile.html" class="text-white hover:text-gray-100 transition p-1">
+                <i class="fa-solid fa-chevron-left text-base"></i>
+            </a>
+            <h1 class="text-base font-bold text-white absolute left-1/2 -translate-x-1/2">About & Terms</h1>
+            <div></div>
+        </div>
+
+        <!-- Language Switcher Tabs -->
+        <div class="bg-white px-4 py-2.5 shadow-sm flex space-x-2 border-b border-gray-100 sticky top-[52px] z-40">
+            <button onclick="switchLang('en')" id="btn-en" class="flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm">English</button>
+            <button onclick="switchLang('hi')" id="btn-hi" class="flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition">हिंदी (Hindi)</button>
+        </div>
+
+        <!-- Content Section -->
+        <div class="p-4 space-y-4 max-w-lg mx-auto pb-10">
+
+            <!-- ENGLISH CONTENT -->
+            <div id="content-en" class="space-y-4">
+                
+                <!-- Risk Warning Banner -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-amber-800">
+                    <div class="flex items-center space-x-2.5 mb-1.5 font-bold text-xs">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
+                        <span>Financial Risk Warning</span>
+                    </div>
+                    <p class="text-[11px] leading-relaxed text-amber-700">
+                        This is an online gaming and prediction platform involving financial risk. Please play responsibly and at your own risk. Only users above 18 years of age are permitted.
+                    </p>
+                </div>
+
+                <!-- About Us -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2.5 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">About Sikka 99</h2>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Sikka 99 is an entertaining online prediction and gaming platform designed to offer fast-paced gaming experiences with secure deposit and instant withdrawal options.
+                    </p>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2.5 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">Terms & Conditions</h2>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-600 pl-4 list-disc leading-relaxed">
+                        <li>Users must be 18+ years of age to register and play on this platform.</li>
+                        <li>The company holds no responsibility for any financial losses incurred during gameplay. Play with what you can afford to risk.</li>
+                        <li>Multiple accounts or fraudulent activities will lead to permanent account suspension and forfeiture of funds.</li>
+                        <li>All deposits must comply with minimum gameplay requirements before requesting a withdrawal.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- HINDI CONTENT -->
+            <div id="content-hi" class="space-y-4 hidden">
+                
+                <!-- Risk Warning Banner (Hindi) -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-amber-800">
+                    <div class="flex items-center space-x-2.5 mb-1.5 font-bold text-xs">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
+                        <span>वित्तीय जोखिम चेतावनी (Financial Risk)</span>
+                    </div>
+                    <p class="text-[11px] leading-relaxed text-amber-700">
+                        यह एक ऑनलाइन गेमिंग और प्रेडिक्शन प्लेटफॉर्म है जिसमें वित्तीय जोखिम (Financial Risk) शामिल है। कृपया जिम्मेदारी से और अपने जोखिम पर खेलें। केवल 18 वर्ष से अधिक आयु के लोग ही खेल सकते हैं।
+                    </p>
+                </div>
+
+                <!-- About Us (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2.5 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">Sikka 99 के बारे में</h2>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Sikka 99 एक मनोरंजन ऑनलाइन गेमिंग प्लेटफॉर्म है जो सुरक्षित डिपॉजिट और फास्ट विदड्रॉल सुविधाओं के साथ बेहतरीन अनुभव प्रदान करता है।
+                    </p>
+                </div>
+
+                <!-- Terms & Conditions (Hindi) -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-2.5 mb-2.5 text-[#00b074]">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <h2 class="text-sm font-bold text-gray-800">नियम और शर्तें (Terms & Conditions)</h2>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-600 pl-4 list-disc leading-relaxed">
+                        <li>इस प्लेटफॉर्म पर खेलने के लिए यूजर की उम्र कम से कम 18 वर्ष होनी चाहिए।</li>
+                        <li>गेम खेलते समय होने वाले किसी भी आर्थिक नुकसान (Loss) के लिए कंपनी जिम्मेदार नहीं होगी। अपनी जिम्मेदारी और रिस्क पर खेलें।</li>
+                        <li>एक से ज्यादा फर्जी अकाउंट बनाने या धोखाधड़ी करने पर अकाउंट हमेशा के लिए ब्लॉक कर दिया जाएगा और बैलेंस जब्त हो जाएगा।</li>
+                        <li>विथड्रॉल करने से पहले नियमों के अनुसार गेम खेलना और डिपॉजिट शर्तों को पूरा करना आवश्यक है।</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script for Switching Language Smoothly -->
+    <script>
+        function switchLang(lang) {
+            const enContent = document.getElementById('content-en');
+            const hiContent = document.getElementById('content-hi');
+            const btnEn = document.getElementById('btn-en');
+            const btnHi = document.getElementById('btn-hi');
+
+            if (lang === 'en') {
+                enContent.classList.remove('hidden');
+                hiContent.classList.add('hidden');
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            } else {
+                hiContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+                btnHi.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-[#00b074] text-white transition shadow-sm";
+                btnEn.className = "flex-1 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-600 transition";
+            }
+        }
+    </script>
+</body>
+</html>
