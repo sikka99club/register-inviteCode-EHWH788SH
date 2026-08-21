@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f3f4f6; }
+        .gradient-card { background: linear-gradient(135deg, #00d285 0%, #00b074 100%); }
+        #customToast { transition: opacity 0.3s ease, transform 0.3s ease; }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Top Header -->
+    <div class="bg-white px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-40">
+        <a href="profile.html" class="text-gray-700 text-lg hover:text-emerald-500 transition">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <h1 class="text-base font-bold text-gray-800">Safe</h1>
+        <div class="w-5"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="px-4 pt-4 space-y-4">
+        
+        <!-- Interest Rate Badge -->
+        <div class="flex justify-center">
+            <span class="bg-red-50 text-red-500 text-xs font-semibold px-4 py-1 rounded-full border border-red-100">
+                Interest rate 0.10%
+            </span>
+        </div>
+
+        <!-- Main Balance Green Card -->
+        <div class="gradient-card rounded-2xl p-5 text-white shadow-md relative overflow-hidden">
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center text-yellow-300">
+                        <i class="fa-solid fa-vault"></i>
+                    </div>
+                    <span class="text-2xl font-black tracking-wide">₹320.00</span>
+                </div>
+                <div class="bg-white/20 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full flex items-center space-x-1 border border-white/20">
+                    <i class="fa-solid fa-shield-halved text-xs"></i>
+                    <span>Financial security</span>
+                </div>
+            </div>
+            <div class="text-xs text-white/90 mb-6 font-medium">
+                24-hour estimated revenue <span class="font-bold">₹0.32</span>
+            </div>
+            <div class="flex justify-end space-x-1.5 text-white/70 text-sm tracking-widest">
+                <span>* * * *</span>
+                <span>* * * *</span>
+            </div>
+        </div>
+
+        <!-- Action Card Panel -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm space-y-5">
+            <!-- Row of Revenues -->
+            <div class="grid grid-cols-2 divide-x divide-gray-100 text-center">
+                <div>
+                    <div class="text-lg font-black text-rose-500 mb-0.5">₹0.00</div>
+                    <div class="text-[11px] text-gray-400 font-medium mb-2">Generated revenue</div>
+                    <div class="inline-block bg-gray-50 border border-gray-100 text-gray-400 text-[10px] px-3 py-1 rounded-full">
+                        My interest rate 0.1
+                    </div>
+                </div>
+                <div>
+                    <div class="text-lg font-black text-gray-800 mb-0.5">₹0.00</div>
+                    <div class="text-[11px] text-gray-400 font-medium mt-1">Accumulated revenue</div>
+                </div>
+            </div>
+
+            <!-- Transfer Buttons -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="showToast('First deposit required')" class="w-full py-3 rounded-xl border border-emerald-500 text-emerald-500 hover:bg-emerald-50 font-bold text-xs transition shadow-sm">
+                    Transfer Out
+                </button>
+                <button onclick="showToast('First deposit required')" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs transition shadow-sm">
+                    Transfer In
+                </button>
+            </div>
+
+            <!-- Security Notice Footer -->
+            <div class="text-center pt-1">
+                <p class="text-[11px] text-gray-400 flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-circle-exclamation text-rose-400"></i>
+                    <span>Funds are safe and secure, and can be transferred at any time</span>
+                </p>
+                <a href="#" onclick="showToast('First deposit required')" class="inline-block text-xs text-emerald-600 font-semibold mt-2 hover:underline">
+                    Learn about safes &gt;&gt;
+                </a>
+            </div>
+        </div>
+
+        <!-- Historical Records Section -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 text-xs font-bold text-gray-800">
+                <div class="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-500 flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <span>Historical records</span>
+            </div>
+            <div>
+                <button onclick="showToast('First deposit required')" class="w-full py-3 rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-50 font-bold text-xs transition text-center shadow-sm">
+                    All history
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Animated Toast Popup Modal -->
+    <div id="customToast" class="fixed inset-0 bg-black/40 flex items-center justify-center z-[999] opacity-0 pointer-events-none">
+        <div class="bg-[#333333] text-white w-[260px] py-7 px-5 rounded-2xl shadow-2xl flex flex-col items-center text-center transform scale-95 transition-transform duration-300">
+            <div class="w-12 h-12 mb-3 flex items-center justify-center">
+                <i class="fa-solid fa-exclamation text-3xl text-white font-black animate-bounce"></i>
+            </div>
+            <p class="text-sm font-medium tracking-wide leading-snug px-1" id="toastMessage">
+                First deposit required
+            </p>
+        </div>
+    </div>
+
+    <!-- Script Logic for Popup Animation -->
+    <script>
+        window.showToast = function(msg) {
+            const toast = document.getElementById('customToast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = msg;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.firstElementChild.classList.remove('scale-95');
+            toast.firstElementChild.classList.add('scale-100');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.firstElementChild.classList.remove('scale-100');
+                toast.firstElementChild.classList.add('scale-95');
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
