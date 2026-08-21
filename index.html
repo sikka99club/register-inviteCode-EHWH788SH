@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikka 99 - Register & Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green {
+            background: linear-gradient(135deg, #00b074 0%, #00da83 100%);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .logo-img {
+            height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Header -->
+    <div class="bg-custom-green text-white pb-8 rounded-b-[30px] shadow-md">
+        <div class="flex items-center justify-between px-4 pt-4">
+            <button id="backBtn" class="text-xl"><i class="fa-solid fa-chevron-left"></i></button>
+            <!-- Updated Logo URL -->
+            <img src="https://raw.githubusercontent.com/casinolootprmo/glowing-carnival/2e7ab2f483cb5e95a3815f2e9ceca9436093fbc8/file_00000000a6688211a0f710b32b3abbdf.png" 
+                 alt="Logo" class="logo-img">
+            <div class="flex items-center space-x-1 bg-black/20 px-2 py-1 rounded-full text-xs">
+                <span>🇺🇸</span>
+                <span class="font-semibold">EN</span>
+            </div>
+        </div>
+        <div class="px-6 mt-6">
+            <h2 id="formTitle" class="text-xl font-bold">Register your phone</h2>
+            <p id="formSubTitle" class="text-xs text-white/90 mt-1">Please register by phone number or email</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-md w-full mx-auto px-6 -mt-4 mb-auto">
+        <div id="formContainer" class="bg-white rounded-2xl shadow-xl p-6 fade-in">
+            
+            <!-- REGISTER FORM -->
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-mobile-screen text-emerald-500 mr-1"></i> Phone number
+                    </label>
+                    <div class="flex border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                        <select class="bg-transparent px-3 py-3 text-sm border-r border-gray-200 focus:outline-none">
+                            <option>+91</option>
+                        </select>
+                        <input type="tel" id="regPhone" placeholder="Please enter the phone number" required
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-lock text-emerald-500 mr-1"></i> Set password
+                    </label>
+                    <div class="relative border border-gray-200 rounded-xl bg-gray-50">
+                        <input type="password" id="regPassword" placeholder="Set password" required
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none pr-10">
+                        <button type="button" onclick="togglePassword('regPassword', this)" class="absolute right-3 top-3 text-gray-400">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-lock text-emerald-500 mr-1"></i> Confirm password
+                    </label>
+                    <div class="relative border border-gray-200 rounded-xl bg-gray-50">
+                        <input type="password" id="regConfirmPassword" placeholder="Confirm password" required
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none pr-10">
+                        <button type="button" onclick="togglePassword('regConfirmPassword', this)" class="absolute right-3 top-3 text-gray-400">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-ticket text-emerald-500 mr-1"></i> Invite code
+                    </label>
+                    <div class="border border-gray-200 rounded-xl bg-gray-50">
+                        <input type="text" id="regInvite" value="6374810851" 
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2 pt-1">
+                    <input type="checkbox" id="terms" required class="rounded text-emerald-500 focus:ring-emerald-400">
+                    <label for="terms" class="text-xs text-gray-500">
+                        I have read and agree <span class="text-red-500 font-medium cursor-pointer">【Privacy Agreement】</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-custom-green text-white font-bold py-3.5 rounded-full shadow-lg hover:opacity-90 transition mt-2">
+                    Register
+                </button>
+
+                <div class="pt-2 text-center">
+                    <button type="button" onclick="switchView('login')" class="w-full border border-emerald-500 text-emerald-600 font-semibold py-3 rounded-full hover:bg-emerald-50 transition">
+                        I have an account <span class="font-bold">Login</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-mobile-screen text-emerald-500 mr-1"></i> Phone number
+                    </label>
+                    <div class="flex border border-gray-200 rounded-xl overflow-hidden bg-gray-50">
+                        <select class="bg-transparent px-3 py-3 text-sm border-r border-gray-200 focus:outline-none">
+                            <option>+91</option>
+                        </select>
+                        <input type="tel" id="loginPhone" placeholder="Please enter the phone number" required
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">
+                        <i class="fa-solid fa-lock text-emerald-500 mr-1"></i> Password
+                    </label>
+                    <div class="relative border border-gray-200 rounded-xl bg-gray-50">
+                        <input type="password" id="loginPassword" placeholder="Password" required
+                            class="w-full px-3 py-3 text-sm bg-transparent focus:outline-none pr-10">
+                        <button type="button" onclick="togglePassword('loginPassword', this)" class="absolute right-3 top-3 text-gray-400">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-1 text-xs">
+                    <label class="flex items-center space-x-2 text-gray-500">
+                        <input type="checkbox" class="rounded text-emerald-500 focus:ring-emerald-400">
+                        <span>Remember password</span>
+                    </label>
+                    <a href="#" class="text-emerald-600 font-medium">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="w-full bg-custom-green text-white font-bold py-3.5 rounded-full shadow-lg hover:opacity-90 transition mt-4">
+                    Log in
+                </button>
+
+                <div class="pt-2 text-center">
+                    <button type="button" onclick="switchView('register')" class="w-full border border-emerald-500 text-emerald-600 font-semibold py-3 rounded-full hover:bg-emerald-50 transition">
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBz-SPwj65Eg9XCIVBLxHu1G_c0YYkI_vY",
+          authDomain: "sikka99-fb62e.firebaseapp.com",
+          projectId: "sikka99-fb62e",
+          storageBucket: "sikka99-fb62e.firebasestorage.app",
+          messagingSenderId: "1050632951434",
+          appId: "1:1050632951434:web:03b6788ef5416f873d3f73",
+          measurementId: "G-1YK1QH5WHV"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.switchView = function(view) {
+            const container = document.getElementById('formContainer');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; 
+            container.classList.add('fade-in');
+
+            const registerForm = document.getElementById('registerForm');
+            const loginForm = document.getElementById('loginForm');
+            const formTitle = document.getElementById('formTitle');
+            const formSubTitle = document.getElementById('formSubTitle');
+
+            if (view === 'login') {
+                registerForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                formTitle.innerText = "Log in";
+                formSubTitle.innerText = "Please log in with your phone number or email";
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                formTitle.innerText = "Register your phone";
+                formSubTitle.innerText = "Please register by phone number or email";
+            }
+        };
+
+        window.togglePassword = function(fieldId, btn) {
+            const input = document.getElementById(fieldId);
+            const icon = btn.querySelector('i');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            }
+        };
+
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('regPhone').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            const inviteCode = document.getElementById('regInvite').value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            try {
+                const q = query(collection(db, "users"), where("phone", "==", phone));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    alert("This phone number is already registered. Please log in.");
+                    return;
+                }
+
+                await addDoc(collection(db, "users"), {
+                    phone: phone,
+                    password: password,
+                    inviteCode: inviteCode,
+                    createdAt: new Date().toISOString()
+                });
+
+                window.location.href = "dashboard.html";
+            } catch (error) {
+                console.error("Error registering user: ", error);
+                alert("Registration failed. Please try again.");
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('loginPhone').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const q = query(collection(db, "users"), where("phone", "==", phone), where("password", "==", password));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    alert("Invalid phone number or password!");
+                    return;
+                }
+
+                window.location.href = "dashboard.html";
+            } catch (error) {
+                console.error("Error logging in: ", error);
+                alert("Login failed. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
