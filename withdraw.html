@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw - Sikka 99</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-custom-green { background: linear-gradient(135deg, #00b074 0%, #00da83 100%); }
+        @keyframes popUp {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop { animation: popUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen pb-28" onpageshow="checkPageBack(event)">
+
+    <!-- Top Header Bar -->
+    <div class="bg-white/95 backdrop-blur-md px-4 py-3.5 flex items-center justify-between shadow-sm sticky top-0 z-50">
+        <a href="dashboard.html" class="text-gray-700 hover:text-emerald-600 transition p-1">
+            <i class="fa-solid fa-chevron-left text-base"></i>
+        </a>
+        <h1 class="text-base font-bold text-gray-800 absolute left-1/2 -translate-x-1/2">Withdraw</h1>
+        <a href="withdrawalhistory.html" class="text-xs font-semibold text-gray-500 hover:text-emerald-600">Withdrawal history</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="px-4 pt-3 space-y-3.5">
+        
+        <!-- Permanent Balance Card (₹320.00 Fixed) -->
+        <div class="bg-gradient-to-br from-emerald-500 via-teal-500 to-emerald-600 rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+            <div class="flex items-center text-xs font-medium text-emerald-100 mb-1">
+                <img src="https://github.com/casinolootprmo/automatic-umbrella/blob/c5b6af1f8e6e3c68c11ee0a2edec1b87f942830e/balance-DmuJO3Yz.png?raw=true" alt="Balance Icon" class="w-4 h-4 mr-1.5 object-contain inline-block"> Available balance
+            </div>
+            <div class="flex justify-between items-end">
+                <div class="text-3xl font-black tracking-tight" id="userLiveBalance">₹320.00</div>
+                <button type="button" onclick="loadUserData()" class="text-white/80 hover:text-white transition p-1 bg-white/10 rounded-xl px-2.5 py-1 text-xs">
+                    <i class="fa-solid fa-rotate text-xs mr-1"></i> Refresh
+                </button>
+            </div>
+            <div class="mt-4 flex justify-between text-[10px] tracking-widest text-emerald-100/70 font-mono">
+                <span>****</span><span>****</span><span>****</span><span>3200</span>
+            </div>
+        </div>
+
+        <!-- ARPay Banner Card -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center space-x-3">
+            <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center p-1 shrink-0 border border-amber-100">
+                <span class="text-amber-500 font-black text-lg">A</span>
+            </div>
+            <div>
+                <div class="text-xs font-bold text-gray-800">ARPay</div>
+                <div class="text-[11px] text-gray-500 leading-tight mt-0.5">Supports UPI for fast payment, and bonuses for withdrawals</div>
+            </div>
+        </div>
+
+        <!-- Single Payment Method Tab -->
+        <div>
+            <div class="grid grid-cols-1">
+                <div class="bg-emerald-500 text-white rounded-2xl p-3 text-center shadow-md border-2 border-emerald-500 flex items-center justify-center space-x-3">
+                    <div class="bg-white/20 p-2 rounded-xl shadow-inner">
+                        <img src="https://github.com/casinolootprmo/automatic-umbrella/blob/c5b6af1f8e6e3c68c11ee0a2edec1b87f942830e/WithBeforeImgIcon_20260428231343x5ar.jpg?raw=true" alt="UPI" class="w-6 h-6 object-contain rounded">
+                    </div>
+                    <div class="text-xs font-bold tracking-wide">UPI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Target Action Box -->
+        <div id="targetActionContainer">
+            <div id="upiBindingBox" onclick="openUpiModal()" class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center cursor-pointer hover:border-emerald-400 transition group">
+                <div class="w-12 h-12 mx-auto border-2 border-dashed border-gray-300 group-hover:border-emerald-500 rounded-xl flex items-center justify-center mb-2 transition">
+                    <i class="fa-solid fa-plus text-gray-400 group-hover:text-emerald-500 text-lg"></i>
+                </div>
+                <div class="text-xs font-bold text-gray-600 group-hover:text-emerald-600 transition">Add UPI</div>
+            </div>
+        </div>
+
+        <!-- Beneficiary Warning Error Note -->
+        <div id="warningNotice" class="text-[11px] text-red-500 font-bold text-center">
+            Need to bind UPI ID to be able to withdraw money
+        </div>
+
+        <!-- Withdrawal Amount Input Section -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 space-y-3">
+            <div class="flex items-center bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-3 focus-within:border-emerald-500 transition shadow-inner">
+                <span class="text-emerald-600 font-bold text-sm mr-2">₹</span>
+                <input type="number" id="withdrawAmountInput" placeholder="Please enter the amount" oninput="syncWithdrawAmount(this.value)" class="w-full bg-transparent text-gray-800 font-bold text-sm outline-none">
+            </div>
+
+            <div class="flex justify-between items-center text-xs">
+                <span class="text-gray-500 font-medium">Withdrawable balance <span id="spanWithdrawableBal" class="text-amber-600 font-bold">₹320.00</span></span>
+                <button type="button" onclick="setFullAmount()" class="border border-emerald-500 text-emerald-600 hover:bg-emerald-50 font-bold px-3 py-1 rounded-lg transition text-[11px]">All</button>
+            </div>
+
+            <div class="flex justify-between items-center text-xs pt-1 border-t border-gray-100">
+                <span class="text-gray-500">Withdrawal amount received</span>
+                <span id="receivedAmountText" class="text-amber-600 font-bold text-sm">₹0.00</span>
+            </div>
+        </div>
+
+        <!-- Submit Withdrawal Button -->
+        <button type="button" onclick="submitWithdrawal()" class="w-full py-3.5 bg-gray-200 text-gray-400 font-bold text-sm rounded-xl shadow-sm transition cursor-not-allowed" id="withdrawSubmitBtn">
+            Withdraw
+        </button>
+
+        <!-- Information / Rules Card -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 space-y-2 text-[11px] text-gray-600">
+            <div class="flex items-start space-x-2">
+                <span class="text-emerald-500 font-bold">•</span>
+                <span>Need to bet <span class="text-emerald-600 font-bold">₹0.00</span> to be able to withdraw</span>
+            </div>
+            <div class="flex items-start space-x-2">
+                <span class="text-emerald-500 font-bold">•</span>
+                <span>Withdraw time <span class="text-red-500 font-medium">00:00-23:55</span></span>
+            </div>
+            <div class="flex items-start space-x-2">
+                <span class="text-emerald-500 font-bold">•</span>
+                <span>Inday Remaining Withdrawal Times <span class="text-red-500 font-bold">3</span></span>
+            </div>
+            <div class="flex items-start space-x-2">
+                <span class="text-emerald-500 font-bold">•</span>
+                <span>Withdrawal amount range <span class="text-emerald-600 font-bold">₹110.00-₹10,000,000.00</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPI Details Binding Modal -->
+    <div id="upiModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-[100] px-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl w-full max-w-sm shadow-2xl animate-pop overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+                <div class="flex items-center space-x-2">
+                    <img src="https://github.com/casinolootprmo/automatic-umbrella/blob/c5b6af1f8e6e3c68c11ee0a2edec1b87f942830e/WithBeforeImgIcon_20260428231343x5ar.jpg?raw=true" alt="UPI" class="w-5 h-5 object-contain rounded">
+                    <span class="text-sm font-bold text-gray-800">Information UPI</span>
+                </div>
+                <button type="button" onclick="closeUpiModal()" class="text-gray-400 hover:text-gray-600 text-sm p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-5 overflow-y-auto space-y-3 text-left text-xs">
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">UPI Name</label>
+                    <input type="text" id="upiNameInput" placeholder="Please enter UPI name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 font-semibold text-gray-800 outline-none focus:border-emerald-500 transition">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Phone Number</label>
+                    <input type="number" id="upiPhoneInput" placeholder="Please enter the phone number" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 font-semibold text-gray-800 outline-none focus:border-emerald-500 transition">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">UPI ID</label>
+                    <input type="text" id="upiIdInput" placeholder="Please enter your UPI ID" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 font-semibold text-gray-800 outline-none focus:border-emerald-500 transition">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Confirm UPI ID</label>
+                    <input type="text" id="upiConfirmIdInput" placeholder="Please enter your UPI ID" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 font-semibold text-gray-800 outline-none focus:border-emerald-500 transition">
+                </div>
+                <button type="button" onclick="saveUpiDetails()" class="w-full py-3 bg-custom-green text-white font-bold text-xs rounded-xl shadow-md transition hover:opacity-95 mt-2">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success / Info Popup Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center z-[100] px-6 backdrop-blur-sm">
+        <div class="bg-[#333333] text-white rounded-2xl w-full max-w-xs shadow-2xl text-center animate-pop py-6 px-5 border border-white/10">
+            <div class="w-6 h-0.5 bg-gray-400 mx-auto mb-4"></div>
+            <i class="fa-solid fa-circle-check text-emerald-400 text-3xl mb-3" id="successModalIcon"></i>
+            <p id="successModalText" class="text-white text-sm font-medium leading-relaxed mb-4">Success!</p>
+            <button type="button" onclick="closeSuccessModal()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-6 rounded-full transition shadow-md">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let liveBalance = 320.00;
+        let enteredWithdrawAmt = 0;
+        let isAccountBound = false;
+        let savedUpiId = "";
+        let isDepositRedirect = false;
+
+        function checkPageBack(event) {
+            if (event.persisted || performance.getEntriesByType("navigation")[0]?.type === "back_forward") {
+                localStorage.removeItem("sikka99_user_upi");
+                localStorage.removeItem("sikka99_user_name");
+            }
+            loadUserData();
+        }
+
+        function loadUserData() {
+            document.getElementById('userLiveBalance').innerText = '₹' + liveBalance.toFixed(2);
+            document.getElementById('spanWithdrawableBal').innerText = '₹' + liveBalance.toFixed(2);
+
+            const localUpi = localStorage.getItem("sikka99_user_upi");
+            const localName = localStorage.getItem("sikka99_user_name");
+
+            if (localUpi) {
+                savedUpiId = localUpi;
+                isAccountBound = true;
+                
+                document.getElementById('upiBindingBox').innerHTML = `
+                    <div class="flex items-center justify-between text-left px-2">
+                        <div>
+                            <div class="text-xs font-bold text-emerald-600"><i class="fa-solid fa-circle-check mr-1"></i> UPI Bound Successfully</div>
+                            <div class="text-xs text-gray-700 font-semibold mt-1">${savedUpiId} (${localName || 'User'})</div>
+                        </div>
+                        <span class="text-[10px] bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-bold">Active</span>
+                    </div>
+                `;
+                document.getElementById('warningNotice').classList.add('hidden');
+            } else {
+                isAccountBound = false;
+                document.getElementById('upiBindingBox').innerHTML = `
+                    <div class="w-12 h-12 mx-auto border-2 border-dashed border-gray-300 group-hover:border-emerald-500 rounded-xl flex items-center justify-center mb-2 transition">
+                        <i class="fa-solid fa-plus text-gray-400 group-hover:text-emerald-500 text-lg"></i>
+                    </div>
+                    <div class="text-xs font-bold text-gray-600 group-hover:text-emerald-600 transition">Add UPI</div>
+                `;
+                document.getElementById('warningNotice').classList.remove('hidden');
+            }
+            validateWithdrawForm();
+        }
+
+        function syncWithdrawAmount(val) {
+            enteredWithdrawAmt = val ? Number(val) : 0;
+            document.getElementById('receivedAmountText').innerText = '₹' + enteredWithdrawAmt.toFixed(2);
+            validateWithdrawForm();
+        }
+
+        function setFullAmount() {
+            document.getElementById('withdrawAmountInput').value = liveBalance;
+            enteredWithdrawAmt = liveBalance;
+            document.getElementById('receivedAmountText').innerText = '₹' + liveBalance.toFixed(2);
+            validateWithdrawForm();
+        }
+
+        function validateWithdrawForm() {
+            const btn = document.getElementById('withdrawSubmitBtn');
+            if (isAccountBound && enteredWithdrawAmt >= 110 && enteredWithdrawAmt <= liveBalance) {
+                btn.className = "w-full py-3.5 bg-custom-green text-white font-bold text-sm rounded-xl shadow-md transition hover:opacity-95 cursor-pointer";
+            } else {
+                btn.className = "w-full py-3.5 bg-gray-200 text-gray-400 font-bold text-sm rounded-xl shadow-sm transition cursor-not-allowed";
+            }
+        }
+
+        function openUpiModal() {
+            if (isAccountBound) {
+                isDepositRedirect = false;
+                document.getElementById('successModalText').innerText = "UPI ID is already saved: " + savedUpiId;
+                document.getElementById('successModal').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('upiModal').classList.add('hidden');
+            document.getElementById('upiModal').classList.remove('hidden');
+        }
+
+        function closeUpiModal() {
+            document.getElementById('upiModal').classList.add('hidden');
+        }
+
+        function saveUpiDetails() {
+            const name = document.getElementById('upiNameInput').value.trim();
+            const phone = document.getElementById('upiPhoneInput').value.trim();
+            const upiId = document.getElementById('upiIdInput').value.trim();
+            const confirmUpi = document.getElementById('upiConfirmIdInput').value.trim();
+
+            if (!name || !phone || !upiId) {
+                alert("Please fill in all UPI fields");
+                return;
+            }
+            if (upiId !== confirmUpi) {
+                alert("UPI IDs do not match!");
+                return;
+            }
+
+            localStorage.setItem("sikka99_user_upi", upiId);
+            localStorage.setItem("sikka99_user_name", name);
+
+            closeUpiModal();
+            loadUserData();
+
+            isDepositRedirect = false;
+            document.getElementById('successModalText').innerText = "UPI ID added successfully!";
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function submitWithdrawal() {
+            if (!isAccountBound) {
+                alert("Please bind your UPI account first!");
+                return;
+            }
+            if (enteredWithdrawAmt < 110) {
+                alert("Minimum withdrawal amount is ₹110.00");
+                return;
+            }
+            if (enteredWithdrawAmt > liveBalance) {
+                alert("Insufficient withdrawable balance!");
+                return;
+            }
+
+            localStorage.removeItem("sikka99_user_upi");
+            localStorage.removeItem("sikka99_user_name");
+
+            isDepositRedirect = true;
+            document.getElementById('successModalText').innerText = "First you need to deposit once.";
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            
+            if (isDepositRedirect) {
+                window.location.href = "deposit.html";
+            } else {
+                loadUserData();
+            }
+        }
+
+        loadUserData();
+    </script>
+</body>
+  </html>
